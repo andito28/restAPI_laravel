@@ -23,3 +23,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/siswa',[SiswaController::class,'index']);
 Route::post('/siswa',[SiswaController::class,'store']);
 Route::put('/siswa/{id}',[SiswaController::class,'update']);
+Route::get('/siswa/{id}',[SiswaController::class,'show']);
+Route::delete('/siswa/{id}',[SiswaController::class,'destroy']);

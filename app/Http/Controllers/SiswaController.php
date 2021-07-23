@@ -87,4 +87,43 @@ class SiswaController extends Controller
             ]);
         }
     }
+
+    public function show($id){
+
+        $siswa = Siswa::findOrFail($id);
+
+        $response = [
+            'message' => 'Detail of siswa resource',
+            'data' => $siswa
+        ];
+
+        return response()->json($response,response::HTTP_OK);
+
+    }
+
+
+    public function destroy($id){
+
+        $siswa = Siswa::findOrFail($id);
+
+        try{
+
+        $siswa->delete();
+
+        $response = [
+            'message' => 'Siswa Deleted',
+            'data' => $siswa
+        ];
+
+        return response()->json($response,response::HTTP_OK);
+        }catch(QueryException $e){
+
+            return response()->json([
+                'message' => 'failed'.$e->errorInfo
+            ]);
+        }
+
+    }
+
+
 }
